@@ -1,3 +1,32 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.fc{
+	display: flex;
+	flex-direction: column;
+}
+.fcc{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center
+}
+
+.modal{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: fixed;
+	background: #88888888;
+	width: 100vw;
+	height: 100vh;
+	top: 0;
+	left: 0;
+}
+.modal-container{
+	background: #fff;
+	padding: 25px;
+	border: 2px solid #888;
+	border-radius: 9px;
+}
