@@ -1,20 +1,5 @@
 <script>
 import { Inertia } from '@inertiajs/inertia'
-/* import { reactive } from 'vue'
-
-export default {
-  setup () {
-    const form = reactive({
-      text: null,
-    })
-
-    function submit() {
-      Inertia.post('/api/item', form)
-    }
-
-    return { form, submit }
-  },
-} */
 export default{
 	data(){
 		return{
@@ -25,9 +10,16 @@ export default{
 	},
 	methods:{
 		createItem(){
-			Inertia.post('/api/item', this.form)
+			if(!this.form.text)return
+			axios.post('/api/item', this.form)
+				.then(res => {
+					Inertia.reload()
+				})
 			this.$emit('closeModal')
 		}
+	},
+	mounted(){
+		document.getElementById('item_text').focus()
 	}
 }
 </script>
@@ -37,10 +29,10 @@ export default{
 	<div class="modal" >
 		<div class="modal-container">
 			<form @submit.prevent="createItem" class="fcc">
-				<label for="item_text">First name:</label>
-				<input id="item_text" v-model="form.text"
+				<label for="item_text">Tarea:</label>
+				<input id="item_text" v-model="form.text" autofocus
 				class="border-solid border-2 border-sky-700 my-2"/>
-				<button type="submit" class="bg-sky-700 px-4 py-1 text-white">SUBMIT</button>
+				<button type="submit" class="bg-sky-700 px-4 py-1 text-white">CREAR</button>
 			</form>
 		</div>
 	</div>

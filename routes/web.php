@@ -18,7 +18,7 @@ use App\Models\Item;
 
 Route::get('/', function () {
     return Inertia::render('Home', ['Items' => Item::all()]);
-});
+})->name('home');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
